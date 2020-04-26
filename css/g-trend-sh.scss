@@ -1,0 +1,79 @@
+// ベースのバックグラウンドカラー
+@mixin baseBg1 () {
+    background: #EA52F8;
+    background: -webkit-linear-gradient(45.34deg, #EA52F8 5.66%, #0066FF 94.35%);
+    background: linear-gradient(45.34deg, #EA52F8 5.66%, #0066FF 94.35%);
+}
+@mixin baseBg2 () {
+    background: white;
+    background: -webkit-linear-gradient(45.34deg, #ECE2FF 5.66%, rgb(179, 210, 255) 94.35%);
+    background: linear-gradient(45.34deg, #ECE2FF 5.66%, rgb(179, 210, 255) 94.35%);
+}
+
+// ベースのflexbox
+@mixin flexbese($ac:stretch, $ai:normal, $jc:center) {
+    display: flex;
+    align-content: $ac;
+    align-items: $ai;
+    justify-content: $jc;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+// ベースのメディアクエリ
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+    @media (max-width: ($pc)) {
+        @content;
+    }
+}
+@mixin tab {
+    @media (max-width: ($tab)) {
+        @content;
+    }
+}
+@mixin sp {
+    @media (max-width: ($sp)) {
+        @content;
+    }
+}
+
+// ブラウザーごとのスタイル設定
+@mixin browser-IE { // IE
+    @media all and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+@mixin browser-eg { // edge
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+// =======================================
+
+.g-trend-searchres {
+    @include flexbese;
+    h3 {
+        @include baseBg1;
+        padding: 5px;
+        color: white;
+        text-align: center;
+        margin: 0;
+    }
+    .popular-index {
+        flex-basis: 100%;
+        @include sp {
+            flex-basis: 100%;
+        }
+    }
+    .area-index, .searchengine-index {
+        flex-basis: 50%;
+        @include sp {
+            flex-basis: 100%;
+        }
+    }
+}

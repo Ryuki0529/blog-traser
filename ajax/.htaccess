@@ -1,0 +1,3 @@
+<Files ~ "^(g-trend\.php|\.htaccess)$">
+Deny from all
+</Files>

@@ -1,0 +1,3 @@
+<Files ~ "^(set\.js|particles.setting\.js|\.htaccess)$">
+Deny from all
+</Files>

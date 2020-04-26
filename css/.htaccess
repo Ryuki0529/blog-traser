@@ -1,0 +1,3 @@
+<Files ~ "^(animate\.css|g-trend-sh\.css|main\.css|\.htaccess)$|\.map$">
+Deny from all
+</Files>

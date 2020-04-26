@@ -1,0 +1,423 @@
+@charset "utf-8";
+/* webフォント「Noto Serif JP」 */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+/* fontawesomeの読み込み */
+@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+
+// ベースのバックグラウンドカラー
+@mixin baseBg1 () {
+    background: #EA52F8;
+    background: -webkit-linear-gradient(45.34deg, #EA52F8 5.66%, #0066FF 94.35%);
+    background: linear-gradient(45.34deg, #EA52F8 5.66%, #0066FF 94.35%);
+}
+@mixin baseBg2 () {
+    background: white;
+    background: -webkit-linear-gradient(45.34deg, #ECE2FF 5.66%, rgb(179, 210, 255) 94.35%);
+    background: linear-gradient(45.34deg, #ECE2FF 5.66%, rgb(179, 210, 255) 94.35%);
+}
+
+// ベースのflexbox
+@mixin flexbese($ac:stretch, $ai:normal, $jc:center) {
+    display: flex;
+    align-content: $ac;
+    align-items: $ai;
+    justify-content: $jc;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+// ベースのメディアクエリ
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+    @media (max-width: ($pc)) {
+        @content;
+    }
+}
+@mixin tab {
+    @media (max-width: ($tab)) {
+        @content;
+    }
+}
+@mixin sp {
+    @media (max-width: ($sp)) {
+        @content;
+    }
+}
+
+// ブラウザーごとのスタイル設定
+@mixin browser-IE { // IE
+    @media all and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+@mixin browser-eg { // edge
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #fffffe;
+	color: black;
+	font-family: "Noto Sans JP", "Meiryo", "Hiragino Kaku Gothic ProN",
+				"Hiragino Kaku Gothic Pro", "Noto Sans Japanese", sans-serif;
+	font-size: 12pt;
+	font-weight: 1;
+	line-height: 1.6;
+	background-attachment: fixed;
+    @include baseBg2;
+    width: 100%;
+	overflow-x: hidden;
+}
+
+.container {
+	max-width: 1200px;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	padding: 25px 15px;
+}.container.design {
+    @include baseBg2;
+    border-radius: 10px;
+}
+
+h1 { font-size: 24pt; text-align: center; }
+h2 { font-size: 18pt; text-align: center; }
+h3 { font-size: 15pt; text-align: center; }
+
+a { text-decoration: none; }
+
+img { width: 100%; }
+
+// ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+header {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    @include baseBg1;
+    overflow: hidden;
+    z-index: 0;
+    &::after {
+        position: absolute;
+        top: 100%;
+        content: '';
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: white;
+        -webkit-box-shadow: 0px 0px 17px 9px #ffffff;
+        box-shadow: 0px 0px 17px 9px #ffffff;
+        z-index: 1;
+    }
+    .hd-wrap {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        color: white;
+        z-index: 10;
+        h1 {
+            float: left;
+            @include sp {
+                float: unset;
+            }
+        }
+    }
+}
+
+.inner {
+    width: 100%;
+    .search-box {
+        width: 100%;
+        margin: 20px 0;
+        input[type="search"] {
+            padding: 10px;
+            font-size: 16pt;
+            width: 80%;
+            border: 4px solid rgb(229, 114, 255);
+            background: rgb(245, 210, 245);
+            display: inline-block;
+            transition: all .7s;
+            &:focus, &:hover {
+                background: white;
+            }
+            @include sp {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        input[type="button"] {
+            font-size: 16pt;
+            padding: 10px 10px;
+            width: 19%;
+            display: inline-block;
+            @include baseBg1;
+            color: white;
+            cursor: pointer;
+            @include sp {
+                width: 100%;
+            }
+        }
+    }
+    .load-search-res-wrap {
+        width: 100%;
+        position: relative;
+        display: block;
+        .re-serch-trend-element { // Google trend再描画用操作エレメント
+            @include flexbese;
+            margin-top: 20px;
+            .tips-text {
+                flex-basis: 60%;
+                padding: 10px;
+                color: #595959;
+                font-size: 11pt;
+                @include sp {
+                    flex-basis: 100%;
+                }
+            }
+            .re-search-box {
+                flex-basis: 40%;
+                padding-top: 10px;
+                @include sp {
+                    flex-basis: 100%;
+                    padding-top: unset;
+                }
+                input[type="search"] {
+                    width: 80%;
+                    padding: 7px;
+                    font-size: 13pt;
+                    @include sp {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+                button {
+                    width: 19%;
+                    padding: 7px;
+                    font-size: 12pt;
+                    text-align: center;
+                    color: white;
+                    cursor: pointer;
+                    @include baseBg1;
+                    @include sp {
+                        width: 100%;
+                        font-size: 14pt;
+                        margin-top: 4px;
+                    }
+                }
+            }
+        }
+        .load-search-res-content {
+            width: 100%;
+            height: 650px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            display: block;
+            z-index: 3;
+            background: white;
+            h3 {
+                @include baseBg1;
+                padding: 5px;
+                color: white;
+            }
+            iframe {
+                width: 100%;
+                height: 600px;
+                border: none;
+            }
+            #load-search-result {
+                margin-bottom: 55px;
+            }
+            .str-average {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                min-width: 150px;
+                padding: 10px;
+                @include baseBg1;
+                font-size: 16pt;
+                color: white;
+                text-align: center;
+            }
+            .loading-effect {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 4;
+                text-align: center;
+                font-size: 18pt;
+                display: none;
+                background: white;
+                .loading-img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 200px;
+                    transform: translate(-50%, -50%);
+                    z-index: 5;
+                    #status-message-sh, #status-message-td {
+                        display: block;
+                        width: 100%;
+                        color: gray;
+                        font-size: 12pt;
+                    }
+                }
+            }
+            // 検索結果共通表示スタイル
+            .search-list-content {
+                @include flexbese;
+                background: white;
+                border-bottom: 2px dotted rgb(173, 173, 173);
+                cursor: default;
+                transition: all .7s;
+                &:hover { background: rgb(246, 246, 246); }
+                // トレンド表示用スタイル
+                .number-text {
+                    flex-basis: 5%;
+                    font-size: 18pt;
+                    text-align: center;
+                    padding: 10px;
+                    @include sp {
+                        flex-basis: 15%;
+                    }
+                }
+                .trend-word {
+                    flex-basis: 75%;
+                    padding: 10px;
+                    @include sp {
+                        flex-basis: 85%;
+                    }
+                    .word-text {
+                        font-size: 18pt;
+                        display: block;
+                        @include sp {
+                            text-align: center;
+                        }
+                    }
+                    .post-link {
+                        font-size: 12pt;
+                        a {
+                            font-size: 13pt;
+                            color: #2d5ba9;
+                            font-weight: normal;
+                            display: inline;
+                            transition: all .6s;
+                            &:hover {
+                                color: #0042b5;
+                            }
+                        }
+                        .source-text, .pubdate-text { display: inline; }
+                    }
+                }
+                .traffic-data {
+                    flex-basis: 20%;
+                    padding: 10px;
+                    text-align: center;
+                    font-size: 18pt;
+                    @include sp {
+                        flex-basis: 100%;
+                    }
+                } // >> トレンド表示用スタイルここまで
+                // サイト分析結果表示用スタイル
+                .page-title {
+                    flex-basis: 60%;
+                    font-size: 16pt;
+                    padding: 10px;
+                    @include sp {
+                        flex-basis: 85%;
+                    }
+                    span {
+                        color: #5F8000;
+                        font-size: 11pt;
+                    }
+                }
+                .str-num-text {
+                    flex-basis: 20%;
+                    padding: 10px;
+                    font-size: 15pt;
+                    text-align: center;
+                    @include sp {
+                        flex-basis: 50%;
+                    }
+                }
+                .show-word-info {
+                    flex-basis: 15%;
+                    padding: 10px;
+                    font-size: 14pt;
+                    text-align: center;
+                    @include sp {
+                        flex-basis: 50%;
+                    }
+                }
+                .number-text.label, .page-title.label,
+                .str-num-text.label, .show-word-info.label {
+                    font-size: 12pt;
+                    text-align: center;
+                    color:rgb(84, 84, 84);
+                }
+            }
+        }.load-search-res-content.trend {
+            overflow-y: unset;
+            height: auto;
+            min-height: 600px;
+            margin-bottom: unset;
+        }
+    }.load-search-res-wrap.hidden {
+        display: none;
+    }
+    a {
+        font-size: 15pt;
+        display: block;
+        color: black;
+    }
+    .notes-content {  // 留意事項記載エリア
+        margin-top: 20px;
+        padding: 15px;
+        background: white;
+        h2 {
+            text-align: left;
+        }
+        a {
+            display: inline;
+            text-decoration: dashed;
+        }
+        ul {
+            padding-left: 15px;
+            margin-top: 10px;
+            color: rgb(72, 72, 72);
+            li {
+                padding: 5px 0 5px;
+            }
+        }
+    }
+}.inner.margin {
+    margin-top: -500px;
+    z-index: 1;
+    position: relative;
+}
+
+footer {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: rgb(178, 180, 245);
+    margin-top: 10px;
+    color: rgb(70, 70, 70);
+    small {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
