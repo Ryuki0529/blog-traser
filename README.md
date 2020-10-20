@@ -13,7 +13,7 @@ URL：<a href="https://blog-traser.lhaplus.biz/" target="_blank">https://blog-tr
 <p>以下はスクリーンショットです。</p>
 
 <p>▽トップページ</p>
-<img src="top-ss.png">
+<img src="res-ss.png">
 
 <p>▽キーワードを検索した結果</p>
-<img src="res-ss.png">
+<img src="top-ss.png">
