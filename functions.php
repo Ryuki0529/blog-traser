@@ -34,7 +34,8 @@ function curl_result( $url ){
 // リアルタイムトレンド取得
 function load_g_trend() {
     $progressTime = floor( (time() - filemtime( 'ajax/g-trend.html' )) / 60 );
-    if ( $progressTime >= 1800 ) {
+    //echo time().'-'.filemtime( 'ajax/g-trend.html' ).'='.$progressTime;
+    if ( $progressTime >= 30 ) {
         ob_start();
         require_once 'ajax/g-trend.php';
         $data = ob_get_clean();

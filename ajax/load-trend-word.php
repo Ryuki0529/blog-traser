@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php if ( $_SESSION['user'] === 'start' ): ?>
 <?php $word = $_GET['word'] ?>
-<link rel="stylesheet" href="../css/g-trend-sh.css">
+<link rel="stylesheet" href="../css/g-trend-sh.min.css">
 <div class="g-trend-searchres">
   <div class="popular-index">
     <h3>キーワードの人気度の動向</h3>

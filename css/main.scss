@@ -126,12 +126,14 @@ header {
         left: 0;
         color: white;
         z-index: 10;
-        h1 {
+        span {
             float: left;
+            font-size: 22pt;
             @include sp {
                 float: unset;
             }
         }
+        h1 { display: none; }
     }
 }
 

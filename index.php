@@ -3,6 +3,7 @@ session_start();
 $_SESSION['user'] = 'start';
 require_once 'functions.php';
 load_g_trend();
+
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -20,6 +21,14 @@ ob_start();
         <meta property="og:image" content="https://blog-traser.infoaxel.com/img/icon.png" />
         <link rel="stylesheet" href="css/main.min.css">
         <link rel="stylesheet" href="css/animate.min.css">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93026554-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-93026554-5');
+        </script>
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/particles.min.js"></script>
         <script type="text/javascript" src="js/wow.min.js"></script>
@@ -29,7 +38,8 @@ ob_start();
         <header id="particles" class="shadow">
             <div class="hd-wrap">
                 <div class="container">
-                    <h1>BLOG TRASER</h1>
+                    <h1>ライバルサイトの文字数・検索ボリュームチェックツール｜BLOG TRASER</h1>
+                    <span>BLOG TRASER</span>
                 </div>
             </div>
         </header>
@@ -73,6 +83,18 @@ ob_start();
                     <div id="load-trend-result"></div>
                 </div>
             </div>
+            <center><span style="font-size:10pt;margin-top:10px;display: block;">スポンサーリンク</span></center>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- レスポンシブリンク広告 -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-3845645533442741"
+                data-ad-slot="5687112852"
+                data-ad-format="link"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
             <div class="notes-content">
                 <h2>留意事項</h2>
                 <ul>
@@ -94,7 +116,7 @@ ob_start();
                     </li>
                     <li>
                         当サービスへのご意見・要望・お問い合わせは
-                        <a href="https://twitter.com/prog_php" target="_blank">Twitter（@prog_php）</a>
+                        <a href="https://twitter.com/prog_lhaplus" target="_blank">Twitter（@prog_lhaplus）</a>
                         にお願いします。
                     </li>
                 </ul>

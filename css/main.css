@@ -93,14 +93,19 @@ header .hd-wrap {
   z-index: 10;
 }
 
-header .hd-wrap h1 {
+header .hd-wrap span {
   float: left;
+  font-size: 22pt;
 }
 
 @media (max-width: 480px) {
-  header .hd-wrap h1 {
+  header .hd-wrap span {
     float: unset;
   }
+}
+
+header .hd-wrap h1 {
+  display: none;
 }
 
 .inner {
